@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //velocità giocatore 
+    //dichiarazioni
     [SerializeField] float velocita;
     private BoxCollider2D pg;
     private Animator animazione;
     void Start()
     {
+        //assegnazione variabili
         pg = GetComponent<BoxCollider2D>();
         animazione = GetComponent<Animator>();
     }
@@ -20,11 +21,15 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        float spostamentoX= Input.GetAxis("Horizontal")*velocita;
+        float spostamentoY= Input.GetAxis("Vertical")*velocita;
+        float spostamento=(spostamentoX*spostamentoX)+(spostamentoY*spostamentoY);
         //movimento giocatore
-        transform.Translate(Input.GetAxis("Horizontal") * velocita, Input.GetAxis("Vertical") * velocita, 0);
-
-        animazione.SetBool("Sinistra", Input.GetAxis("Horizontal") < 0);
-        animazione.SetBool("Sopra", Input.GetAxis("Vertical") > 0);
+        transform.Translate(spostamentoX, spostamentoY, 0);
+        //controllo per animazione 
+        animazione.SetFloat("Orizzontale", spostamentoX);
+        animazione.SetFloat("Verticale", spostamentoY);
+        animazione.SetFloat("Velocità", spostamento);
 
     }
 }
