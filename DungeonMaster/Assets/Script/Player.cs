@@ -25,17 +25,28 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         //movimento giocatore
-        Movimento();       
-        //controllo per animazione 
-        animazione.SetFloat("Orizzontale", movimento.x);
-        animazione.SetFloat("Verticale", movimento.y);
-        animazione.SetFloat("Velocità", movimento.sqrMagnitude);
+        Movimento();
+        //animazione movimento
+        Animazione();
 
+    }
+    private void nTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Nemico"))
+        {
+            Destroy(rb);
+        }
     }
     private void Movimento()
     {
         movimento.x = Input.GetAxis("Horizontal") * velocita;
         movimento.y = Input.GetAxis("Vertical") * velocita;
         rb.MovePosition(rb.position + movimento);
+    }
+    private void Animazione()
+    {
+        animazione.SetFloat("Orizzontale", movimento.x);
+        animazione.SetFloat("Verticale", movimento.y);
+        animazione.SetFloat("Velocità", movimento.sqrMagnitude);
     }
 }
