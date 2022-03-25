@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     //dichiarazioni
     [SerializeField] float velocita;
+    [SerializeField] int vite;
     private BoxCollider2D pg;
     private Rigidbody2D rb;
     private Animator animazione;
@@ -30,11 +31,15 @@ public class Player : MonoBehaviour
         Animazione();
 
     }
-    private void nTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Nemico"))
         {
-            Destroy(rb);
+            vite--;
+            if (vite == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     private void Movimento()
@@ -48,5 +53,9 @@ public class Player : MonoBehaviour
         animazione.SetFloat("Orizzontale", movimento.x);
         animazione.SetFloat("Verticale", movimento.y);
         animazione.SetFloat("Velocità", movimento.sqrMagnitude);
+    }
+    private void Danno()
+    {
+
     }
 }
