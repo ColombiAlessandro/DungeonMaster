@@ -35,11 +35,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Nemico"))
         {
-            vite--;
-            if (vite == 0)
-            {
-                Destroy(gameObject);
-            }
+            Danno();
         }
     }
     private void Movimento()
@@ -56,6 +52,10 @@ public class Player : MonoBehaviour
     }
     private void Danno()
     {
-
+        vite--;
+        if (vite == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
