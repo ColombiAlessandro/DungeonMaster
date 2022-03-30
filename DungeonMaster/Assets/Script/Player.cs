@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] float velocita;
     [SerializeField] int vite;
+    public Barra barra;
     private BoxCollider2D pg;
     private Rigidbody2D rb;
     private Animator animazione;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         pg = GetComponent<BoxCollider2D>();
         animazione = GetComponent<Animator>();
+        barra.VitaMassima(vite);
     }
     // Update is called once per frame
     void Update()
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
     private void Danno()
     {
         vite--;
+        barra.ImpostaVita(vite);
         if (vite == 0)
         {
             Destroy(gameObject);
