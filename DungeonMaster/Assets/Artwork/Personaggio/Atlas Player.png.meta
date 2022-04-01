@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: -3800897153972709858
     second: Mov S 2
+  - first:
+      213: -5233929327030489619
+    second: Player attacco
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -324,7 +327,7 @@ TextureImporter:
         width: 14
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,7 +348,7 @@ TextureImporter:
         width: 14
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,7 +369,7 @@ TextureImporter:
         width: 14
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -374,6 +377,27 @@ TextureImporter:
       bones: []
       spriteID: e16d9ad2d20804bc0800000000000000
       internalID: -3800897153972709858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attacco
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 231
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded29d2f1095d57b0800000000000000
+      internalID: -5233929327030489619
       vertices: []
       indices: 
       edges: []
