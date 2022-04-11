@@ -2579,6 +2579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocita: 0.015
   vite: 3
+  attacco: 0
   barra: {fileID: 1867859145}
 --- !u!61 &950094619
 BoxCollider2D:

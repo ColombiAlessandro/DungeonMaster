@@ -50,6 +50,30 @@ TextureImporter:
   - first:
       213: -1057999058514295488
     second: Att.S
+  - first:
+      213: -5320132182107059292
+    second: Att.A1
+  - first:
+      213: 33614858477743971
+    second: Att.D1
+  - first:
+      213: 8685511036617407353
+    second: Att.G1
+  - first:
+      213: -4136583726255370191
+    second: Att.S1
+  - first:
+      213: -1970282572243406085
+    second: Att.A2
+  - first:
+      213: -1280836610131313895
+    second: Att.D2
+  - first:
+      213: -6336161587966104581
+    second: Att.G2
+  - first:
+      213: 4771200421632617113
+    second: Att.S2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -395,12 +419,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 201
-        y: 221
+        y: 231
         width: 14
-        height: 29
-      alignment: 9
-      pivot: {x: 0.5, y: 0.65}
-      border: {x: 0, y: 9, z: 0, w: 0}
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -417,11 +441,11 @@ TextureImporter:
         serializedVersion: 2
         x: 201
         y: 169
-        width: 23
+        width: 15
         height: 19
-      alignment: 9
-      pivot: {x: 0.35, y: 0.5}
-      border: {x: 0, y: 0, z: 8, w: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -438,11 +462,11 @@ TextureImporter:
         serializedVersion: 2
         x: 200
         y: 105
-        width: 14
-        height: 29
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 10}
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -457,19 +481,187 @@ TextureImporter:
       name: Att.S
       rect:
         serializedVersion: 2
-        x: 190
+        x: 200
         y: 41
-        width: 23
+        width: 14
         height: 19
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 9, y: 0, z: 0, w: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 045ce88367b3151f0800000000000000
       internalID: -1057999058514295488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.A1
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 233
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab8267b7f71b26b0800000000000000
+      internalID: -5320132182107059292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.D1
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 169
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36fadb2298c677000800000000000000
+      internalID: 33614858477743971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.G1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 105
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bb05e1542298870800000000000000
+      internalID: 8685511036617407353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.S1
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 41
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13013ec7407e796c0800000000000000
+      internalID: -4136583726255370191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.A2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 233
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf2f946807628a4e0800000000000000
+      internalID: -1970282572243406085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.D2
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 169
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91bbec5a3ed893ee0800000000000000
+      internalID: -1280836610131313895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.G2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 105
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb2ecd2b9e6118a0800000000000000
+      internalID: -6336161587966104581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att.S2
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 41
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a2b9b2185b63240800000000000000
+      internalID: 4771200421632617113
       vertices: []
       indices: 
       edges: []
