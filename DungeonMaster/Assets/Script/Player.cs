@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D pg;
     private Rigidbody2D rb;
     private Animator animazione;
-    private Vector2 movimento;
+    public Vector2 movimento;
     void Start()
     {
         //assegnazione variabili
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
         barra.VitaMassima(vite);
         timerAttacco = new Timer(1100);
         timerAttacco.Elapsed += TimerAttacco_Elapsed;
+        
     }
 
     private void TimerAttacco_Elapsed(object sender, ElapsedEventArgs e)
