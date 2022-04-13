@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Timers;
 using UnityEngine;
 
@@ -8,13 +9,14 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] float velocita;
     [SerializeField] int vite;
-    public static Timer timerAttacco;
+    public static Stopwatch timerAttacco;
     public bool attacco;
     public Barra barra;
     private BoxCollider2D pg;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator animazione;
     public Vector2 movimento;
+    
     void Start()
     {
         //assegnazione variabili
@@ -22,33 +24,32 @@ public class Player : MonoBehaviour
         pg = GetComponent<BoxCollider2D>();
         animazione = GetComponent<Animator>();
         barra.VitaMassima(vite);
-        timerAttacco = new Timer(1100);
-        timerAttacco.Elapsed += TimerAttacco_Elapsed;
+        
         
     }
-
-    private void TimerAttacco_Elapsed(object sender, ElapsedEventArgs e)
-    {
-        attacco = false;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            attacco = true;
-            timerAttacco.Start();
-            Animazione();
-        }
+        
     }
     private void FixedUpdate()
     {
+        
+        
+        
+        if (Input.GetMouseButtonDown(0) && attacco==false)
+        {
+            attacco = true;
+            animazione.SetBool("Attacco", true);
+            timerAttacco.Start();
+        }
+        
         //movimento giocatore
         Movimento();
         //animazione movimento
         Animazione();
         
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
         {
             if (attacco)
             {
-                Debug.Log("Colpito");
+                UnityEngine.Debug.Log("Colpito");
             }
             else
             {
@@ -75,7 +76,7 @@ public class Player : MonoBehaviour
         animazione.SetFloat("Orizzontale", movimento.x);
         animazione.SetFloat("Verticale", movimento.y);
         animazione.SetFloat("Velocità", movimento.sqrMagnitude);
-        animazione.SetBool("Attacco", attacco);
+        
     }
     private void Danno()
     {
