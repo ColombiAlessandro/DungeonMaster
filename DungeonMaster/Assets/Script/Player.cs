@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] float velocita;
     [SerializeField] int vite;
-    //private static Stopwatch timerAttacco;
-    //private static Stopwatch cdAttacco;
     public bool attacco;
     public Barra barra;
     private BoxCollider2D pg;
@@ -19,6 +17,7 @@ public class Player : MonoBehaviour
     public Vector2 movimento;
     private float cooldown = 0;
     private float durata;
+    private float invulnerabilità=0;
     void Start()
     {
         //assegnazione variabili
@@ -37,6 +36,7 @@ public class Player : MonoBehaviour
             {
                 //cdAttacco.Reset();
                 attacco = true;
+                gameObject.tag.Replace("Player", "Attacco");
                 animazione.SetBool("Attacco", true);
                 //timerAttacco.Start();
                 cooldown = Time.time + 1.0f;
@@ -47,17 +47,8 @@ public class Player : MonoBehaviour
         {
             attacco = false;
             animazione.SetBool("Attacco", false);
+            gameObject.tag.Replace("Attacco", "Player");
         }
-        
-        /*
-        if (timerAttacco.ElapsedMilliseconds == 500)
-        {
-            timerAttacco.Reset();
-            attacco = false;
-            cdAttacco.Start();
-        }
-        */
-
     }
     private void FixedUpdate()
     {
@@ -76,7 +67,11 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Danno();
+                if (Time.time >= invulnerabilità)
+                {
+                    Danno();
+                    invulnerabilità = Time.time + 1.0f;
+                }
             }
         }
     }
