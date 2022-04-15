@@ -9,14 +9,16 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] float velocita;
     [SerializeField] int vite;
-    public static Stopwatch timerAttacco;
+    //private static Stopwatch timerAttacco;
+    //private static Stopwatch cdAttacco;
     public bool attacco;
     public Barra barra;
     private BoxCollider2D pg;
     public Rigidbody2D rb;
     private Animator animazione;
     public Vector2 movimento;
-    
+    private float cooldown = 0;
+    private float durata;
     void Start()
     {
         //assegnazione variabili
@@ -24,32 +26,45 @@ public class Player : MonoBehaviour
         pg = GetComponent<BoxCollider2D>();
         animazione = GetComponent<Animator>();
         barra.VitaMassima(vite);
-        
-        
     }
     // Update is called once per frame
     void Update()
     {
         
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Time.time >= cooldown)
+            {
+                //cdAttacco.Reset();
+                attacco = true;
+                animazione.SetBool("Attacco", true);
+                //timerAttacco.Start();
+                cooldown = Time.time + 1.0f;
+                durata = Time.time + 0.5f;
+            }
+        }
+        if (Time.time >= durata)
+        {
+            attacco = false;
+            animazione.SetBool("Attacco", false);
+        }
+        
+        /*
+        if (timerAttacco.ElapsedMilliseconds == 500)
+        {
+            timerAttacco.Reset();
+            attacco = false;
+            cdAttacco.Start();
+        }
+        */
+
     }
     private void FixedUpdate()
     {
-        
-        
-        
-        if (Input.GetMouseButtonDown(0) && attacco==false)
-        {
-            attacco = true;
-            animazione.SetBool("Attacco", true);
-            timerAttacco.Start();
-        }
-        
         //movimento giocatore
         Movimento();
         //animazione movimento
         Animazione();
-        
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
