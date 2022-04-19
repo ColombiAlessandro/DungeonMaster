@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18487778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0, z: 0}
+  m_LocalPosition: {x: 0.012, y: -0.013, z: 0}
   m_LocalScale: {x: 0.25982767, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1503039292}
@@ -2429,9 +2429,13 @@ MonoBehaviour:
   velocita: 0.015
   vite: 3
   attacco: 0
+  attaccaFermo: 0
+  colpito: 0
+  fermo: 0
   barra: {fileID: 1867859145}
   rb: {fileID: 0}
   movimento: {x: 0, y: 0}
+  pos: {fileID: 0}
 --- !u!61 &950094619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2517,7 +2521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950094617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.039, y: 0.397, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2803,7 +2807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de0f914edc378940b810ae796e3061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "velocit\xE0N": 0.3
+  "velocit\xE0N": 0
   giocatore: {fileID: 950094617}
   nemico: {fileID: 0}
   vite: 3
@@ -3377,7 +3381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -282, y: 177}
+  m_AnchoredPosition: {x: -178, y: 121}
   m_SizeDelta: {x: 64.025, y: 5.8725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867859144
