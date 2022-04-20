@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     private float durata;
     private float invulnerabilità = 0;
     public Transform pos;
+    [SerializeField] public AudioSource slash;
+    [SerializeField] public AudioSource danno;
+    [SerializeField] public AudioSource death;
+    
     void Start()
     {
         //assegnazione variabili
@@ -28,11 +32,11 @@ public class Player : MonoBehaviour
         animazione = GetComponent<Animator>();
         barra.VitaMassima(vite);
         pos = gameObject.GetComponent<Transform>();
+       
     }
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
             if (Time.time >= cooldown)
@@ -42,6 +46,7 @@ public class Player : MonoBehaviour
                 fermo = true;
                 UnityEngine.Debug.Log(fermo);
                 UnityEngine.Debug.Log(attacco);
+                slash.Play();
                 gameObject.tag.Replace("Player", "Attacco");
                 animazione.SetBool("Attacco", true);
                 //timerAttacco.Start();
@@ -91,6 +96,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Nemico"))
         {
+           if(attacco==false)
             animazione.SetBool("Colpito", true);
             if (attacco)
             {
@@ -124,9 +130,10 @@ public class Player : MonoBehaviour
         barra.ImpostaVita(vite);
         animazione.SetBool("Colpito", true);
         colpito = true;
-
+        danno.Play();
         if (vite == 0)
         {
+            death.Play();
             animazione.SetBool("Morte", true);
             velocita = 0;
             //Destroy(gameObject);
@@ -135,7 +142,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator Timer()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         animazione.SetBool("Colpito", false);
     }
     /*IEnumerator Knockback()
