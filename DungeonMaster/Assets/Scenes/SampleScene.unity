@@ -3103,8 +3103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "velocit\xE0N": 0
   giocatore: {fileID: 950094617}
-  nemico: {fileID: 0}
-  vite: 3
+  vite: 1
   player: {fileID: 0}
 --- !u!1 &1411787388
 GameObject:
@@ -3272,7 +3271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "velocit\xE0N": 0
   giocatore: {fileID: 950094617}
-  nemico: {fileID: 0}
   vite: 3
   player: {fileID: 0}
 --- !u!1 &1503039290
@@ -4005,6 +4003,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "velocit\xE0N": 0
   giocatore: {fileID: 950094617}
-  nemico: {fileID: 0}
   vite: 3
   player: {fileID: 0}

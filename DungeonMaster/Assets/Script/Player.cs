@@ -9,17 +9,19 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] float velocita;
     [SerializeField] int vite;
-    private int i = 0;
     public bool attacco, attaccaFermo,colpito, fermo = true;
     public Barra barra;
     private BoxCollider2D pg;
     public Rigidbody2D rb;
+    //movimento
     private Animator animazione;
     public Vector2 movimento;
+    //attacco e danno
     private float cooldown = 0;
     private float durata;
     private float invulnerabilità = 0;
     public Transform pos;
+    //suoni
     [SerializeField] public AudioSource slash;
     [SerializeField] public AudioSource danno;
     [SerializeField] public AudioSource death;
@@ -41,15 +43,17 @@ public class Player : MonoBehaviour
         {
             if (Time.time >= cooldown)
             {
-                //cdAttacco.Reset();
                 attacco = true;
-                fermo = true;
-                UnityEngine.Debug.Log(fermo);
-                UnityEngine.Debug.Log(attacco);
+                if (fermo)
+                {
+                    attaccaFermo = true;
+                    animazione.SetBool("attaccaFermo", true);
+                }
+                //fermo = true;
+                //UnityEngine.Debug.Log(fermo);
+                //UnityEngine.Debug.Log(attacco);
                 slash.Play();
-                gameObject.tag.Replace("Player", "Attacco");
                 animazione.SetBool("Attacco", true);
-                //timerAttacco.Start();
                 cooldown = Time.time + 1.0f;
                 durata = Time.time + 0.5f;
             }
@@ -59,18 +63,18 @@ public class Player : MonoBehaviour
         {
             attacco = false;
             animazione.SetBool("Attacco", false);
-            gameObject.tag.Replace("Attacco", "Player");
+            attaccaFermo = false;
+            animazione.SetBool("attaccaFermo", false);
         }
 
         if (colpito == true)
         {
-            //StartCoroutine(Knockback());
             colpito = false;
         }
     }
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W) == true || Input.GetKey(KeyCode.A) == true || Input.GetKey(KeyCode.S) == true || Input.GetKey(KeyCode.D) == true)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
             animazione.SetBool("fermo", false);
             //movimento giocatore
@@ -80,16 +84,8 @@ public class Player : MonoBehaviour
         }
         else
         {
+            fermo = true;
             animazione.SetBool("fermo", true);
-            if (attacco == true && fermo == true)
-            {
-                attaccaFermo = true;
-                animazione.SetBool("attaccaFermo", true);
-            }
-            if (attacco == false && fermo == true && attaccaFermo == true)
-            {
-                animazione.SetBool("attaccaFermo", false);
-            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

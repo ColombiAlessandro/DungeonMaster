@@ -23,8 +23,8 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tempo = Time.time;
-        Debug.Log(tempo);
+        //tempo = Time.time;
+        //Debug.Log(tempo);
        
           
     }

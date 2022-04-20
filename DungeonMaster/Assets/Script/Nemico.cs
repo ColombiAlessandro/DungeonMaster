@@ -7,7 +7,6 @@ public class Nemico : MonoBehaviour
 {
     [SerializeField] float velocit‡N;
     [SerializeField] GameObject giocatore;
-    [SerializeField] GameObject nemico;
     [SerializeField] public int vite;
     public Player player; 
     
@@ -33,11 +32,11 @@ public class Nemico : MonoBehaviour
         {
             if (player.attacco == true)
             {
-                Perdita_vite();
+                PerditaVite();
             }
         }
     }
-    public void Perdita_vite()
+    public void PerditaVite()
     {
         vite--;
         if (vite == 0)
