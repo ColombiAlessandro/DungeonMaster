@@ -12,7 +12,7 @@ TagManager:
   - sg<gsg
   - Water
   - UI
-  - 
+  - UIvolume
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
     locked: 0
   - name: sprites
     uniqueID: 1845511789
+    locked: 0
+  - name: MenuPausa
+    uniqueID: 799951169
     locked: 0

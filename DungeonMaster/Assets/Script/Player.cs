@@ -7,9 +7,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     //dichiarazioni
-    [SerializeField] float velocita;
-    [SerializeField] int vite;
-    public bool attacco, attaccaFermo,colpito, fermo = true;
+    [SerializeField] public float velocita;
+    [SerializeField] public int vite;
+    public bool attacco, attaccaFermo, colpito, fermo = true, pausa=false;
     public Barra barra;
     private BoxCollider2D pg;
     public Rigidbody2D rb;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] public AudioSource slash;
     [SerializeField] public AudioSource danno;
     [SerializeField] public AudioSource death;
-    
+    //menu pausa
     void Start()
     {
         //assegnazione variabili
@@ -34,13 +34,15 @@ public class Player : MonoBehaviour
         animazione = GetComponent<Animator>();
         barra.VitaMassima(vite);
         pos = gameObject.GetComponent<Transform>();
-       
+       // MenuPausa.SetActive(false);
+     
     }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            // UnityEngine.Debug.Log(/*PauseMenu.activeSelf*/);
             if (Time.time >= cooldown)
             {
                 attacco = true;
@@ -68,8 +70,20 @@ public class Player : MonoBehaviour
         }
 
         if (colpito == true)
-        {
             colpito = false;
+        // Pauseactive();
+        if (Input.GetKey(KeyCode.P))
+        {
+            if (pausa == true)
+            {
+                UnityEngine.Debug.Log(pausa);
+                UnPause();
+            }
+            else
+            {
+                UnityEngine.Debug.Log(pausa);
+                Pause();
+            }
         }
     }
     private void FixedUpdate()
@@ -92,8 +106,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Nemico"))
         {
-           if(attacco==false)
-            animazione.SetBool("Colpito", true);
+            if (attacco == false)
+                animazione.SetBool("Colpito", true);
             if (attacco)
             {
                 UnityEngine.Debug.Log("Colpito");
@@ -126,7 +140,10 @@ public class Player : MonoBehaviour
         barra.ImpostaVita(vite);
         animazione.SetBool("Colpito", true);
         colpito = true;
-        danno.Play();
+        if (vite > 0)
+        {
+            danno.Play();
+        }
         if (vite == 0)
         {
             death.Play();
@@ -135,6 +152,34 @@ public class Player : MonoBehaviour
             //Destroy(gameObject);
         }
         StartCoroutine(Timer());
+    }
+   /* public void Pauseactive()
+    {
+        if (Input.GetKey(KeyCode.P))
+        {
+            if (pausa == true)
+            {
+                UnPause();
+            }
+            else
+            {
+                Pause();
+            }
+
+        }
+
+    }*/
+    public void Pause()
+    {
+       // MenuPausa.SetActive(true);
+        Time.timeScale = 0f;
+        pausa = true;
+    }
+    public void UnPause()
+    {
+      //  MenuPausa.SetActive(false);
+        Time.timeScale = 1f;
+        pausa = false;
     }
     IEnumerator Timer()
     {
