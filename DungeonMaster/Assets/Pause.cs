@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-    public bool pausa;
+    public bool paused;
     public GameObject PauseMenu;
-
+    [SerializeField] GameObject player;
+    public Player pl;
     private void Start()
     {
         PauseMenu.SetActive(false);
-        pausa = false;
-
-
+        pl = player.GetComponent<Player>();
+        
     }
 
     private void Update()
@@ -18,18 +19,16 @@ public class Pause : MonoBehaviour
         UnityEngine.Debug.Log(Time.timeScale);
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (pausa == true)
-            {
-                UnityEngine.Debug.Log("primattrue" + pausa);
-                UnPause();
-                UnityEngine.Debug.Log("dopotrue"+pausa);
-            }
-            else if(pausa==false)
-            {
-                UnityEngine.Debug.Log("primafalse" + pausa);
-                Pausa();
-                UnityEngine.Debug.Log("dopofalse" + pausa);
-            }
+            paused = !paused;
+        }
+        if (paused == true)
+        {
+            Pausa();
+            pl.slash.Stop();
+        }
+        else
+        {
+            UnPause();
         }
     }
     public void Pausa()
@@ -37,15 +36,17 @@ public class Pause : MonoBehaviour
         
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        pausa = true;
-        
     }
     public void UnPause()
     {
         
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        pausa = false;
-     
+        paused = false;
+    }
+
+    public void Mainmenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

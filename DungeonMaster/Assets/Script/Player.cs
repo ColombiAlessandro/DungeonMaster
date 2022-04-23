@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] public float velocita;
     [SerializeField] public int vite;
-    public bool attacco, attaccaFermo, colpito, fermo = true, pausa=false;
+    public bool attacco, attaccaFermo, colpito, fermo = true;
     public Barra barra;
     private BoxCollider2D pg;
     public Rigidbody2D rb;
@@ -71,20 +71,7 @@ public class Player : MonoBehaviour
 
         if (colpito == true)
             colpito = false;
-        // Pauseactive();
-        if (Input.GetKey(KeyCode.P))
-        {
-            if (pausa == true)
-            {
-                UnityEngine.Debug.Log(pausa);
-                UnPause();
-            }
-            else
-            {
-                UnityEngine.Debug.Log(pausa);
-                Pause();
-            }
-        }
+     
     }
     private void FixedUpdate()
     {
@@ -169,18 +156,6 @@ public class Player : MonoBehaviour
         }
 
     }*/
-    public void Pause()
-    {
-       // MenuPausa.SetActive(true);
-        Time.timeScale = 0f;
-        pausa = true;
-    }
-    public void UnPause()
-    {
-      //  MenuPausa.SetActive(false);
-        Time.timeScale = 1f;
-        pausa = false;
-    }
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(1);
