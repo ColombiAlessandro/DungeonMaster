@@ -91,6 +91,16 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //raccoglimento pozioni
+        if (collision.gameObject.CompareTag("Pozione")){
+            if (vite < 3)
+            {
+                vite++;
+                barra.ImpostaVita(vite);
+                Destroy(collision.gameObject);
+            }
+        }
+        //danno/attacco
         if (collision.gameObject.CompareTag("Nemico"))
         {
             if (attacco == false)
@@ -130,9 +140,7 @@ public class Player : MonoBehaviour
         if (vite > 0)
         {
             danno.Play();
-        }
-        if (vite == 0)
-        {
+        } else { 
             death.Play();
             animazione.SetBool("Morte", true);
             velocita = 0;
@@ -140,62 +148,10 @@ public class Player : MonoBehaviour
         }
         StartCoroutine(Timer());
     }
-   /* public void Pauseactive()
-    {
-        if (Input.GetKey(KeyCode.P))
-        {
-            if (pausa == true)
-            {
-                UnPause();
-            }
-            else
-            {
-                Pause();
-            }
-
-        }
-
-    }*/
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(1);
         animazione.SetBool("Colpito", false);
     }
-    /*IEnumerator Knockback()
-    {
-
-        if(movimento.x<0 && (movimento.y >= 0 || movimento.y <= 0))
-        {
-            while (i < 10)
-            {
-                gameObject.transform.position = new Vector2(movimento.x - 0.50f,0);
-                yield return null;
-            }
-        }
-        else if (movimento.x > 0 && (movimento.y >= 0 || movimento.y<=0))
-        {
-            while (i < 10)
-            {
-                gameObject.transform.position = new Vector2(movimento.x + 0.50f, 0);
-                yield return null;
-            }
-        }
-        else if ((movimento.x <= 0 || movimento.x >= 0) && movimento.y > 0)
-        {
-            while (i < 10)
-            {
-                gameObject.transform.position = new Vector2(0, movimento.y + 0.50f);
-                yield return null;
-            }
-        }
-        else if ((movimento.x <= 0 || movimento.x >= 0) && movimento.y < 0)
-        {
-            while (i < 10)
-            {
-                
-                gameObject.transform.position = new Vector2(0, movimento.y - 0.50f);
-                yield return null;
-            }
-        }
-    }*/
+   
 }

@@ -8,8 +8,9 @@ public class Nemico : MonoBehaviour
     [SerializeField] float velocit‡N;
     [SerializeField] GameObject giocatore;
     [SerializeField] public int vite;
-    public Player player; 
-    
+    [SerializeField] GameObject pozione;
+    public Player player;
+    private int rilascioPozione;
     private void Start()
     {
         player = giocatore.GetComponent<Player>();
@@ -45,6 +46,11 @@ public class Nemico : MonoBehaviour
         vite--;
         if (vite == 0)
         {
+            rilascioPozione = UnityEngine.Random.Range(0, 6);
+            if (rilascioPozione == 1)
+            {
+                Instantiate(pozione, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
