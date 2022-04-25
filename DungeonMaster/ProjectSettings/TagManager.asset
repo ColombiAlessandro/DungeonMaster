@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Nemico
   - Pozione
+  - Blocco
   layers:
   - Default
   - TransparentFX

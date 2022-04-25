@@ -16,7 +16,6 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        UnityEngine.Debug.Log(Time.timeScale);
         if (Input.GetKeyDown(KeyCode.P))
         {
             paused = !paused;

@@ -60,12 +60,12 @@
     <Compile Include="Assets\Script\Nemico.cs" />
     <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\MenuPrincipale.cs" />
-    <Compile Include="Assets\Script\Spawner.cs" />
     <Compile Include="Assets\Script\Pause.cs" />
     <Compile Include="Assets\Script\VolumeMusic.cs" />
     <Compile Include="Assets\Script\Barra.cs" />
     <Compile Include="Assets\Script\MuteMusic.cs" />
     <Compile Include="Assets\Script\VolumeSfx.cs" />
+    <Compile Include="Assets\Script\CreazioneNemici.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
