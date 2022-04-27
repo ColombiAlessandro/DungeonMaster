@@ -96,19 +96,7 @@ public class Player : MonoBehaviour
             animazione.SetBool("fermo", true);
         }
 
-        if ((animazione.GetFloat("Orizzontale") < 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale")<0)))
-        {
-            VersoKnockBack = 1;
-            VersoKnockBack1 = 3;
-        }
-            
-
-        else if ((animazione.GetFloat("Orizzontale") > 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0)))
-        {
-            VersoKnockBack = 2;
-            VersoKnockBack1 = 4;
-        }
-
+       
         
     }
     private void OnTriggerEnter2D(Collider2D collision)

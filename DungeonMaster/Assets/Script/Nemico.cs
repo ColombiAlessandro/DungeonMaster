@@ -24,10 +24,7 @@ public class Nemico : MonoBehaviour
     private void FixedUpdate()
     {
         inseguimento();
-        if (player.velocita == 0 && player.vite != 0)
-            velocit‡N = 0;
-        else if(player.velocita!=0)
-            velocit‡N = 0.2f;
+        
     }
     public void inseguimento()
     {
