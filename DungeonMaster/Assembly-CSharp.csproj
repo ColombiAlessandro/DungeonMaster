@@ -67,6 +67,9 @@
     <Compile Include="Assets\Script\CreazioneNemici.cs" />
     <Compile Include="Assets\Script\VolumeSfx.cs" />
     <Compile Include="Assets\Script\Nemico2.cs" />
+    <Compile Include="Assets\Script\Ondata2.cs" />
+    <Compile Include="Assets\Script\Ondata3.cs" />
+    <Compile Include="Assets\Script\Ondata1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

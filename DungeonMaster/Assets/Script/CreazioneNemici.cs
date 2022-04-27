@@ -8,12 +8,27 @@ public class CreazioneNemici : MonoBehaviour
     private Animator animazioni;
     [SerializeField] GameObject[] nemici;
     //tempo tra un'ondata di nemici e quella dopo
-    private float creazioneNemici;
-    private int temp;
+    private float creazioneNemici,SpawnSlimeR=10f, SpawnSlimeV = 3.5f, SpawnSlimeA = 6f;
+    private int temp,i=0,Ondata=1;
     private float cooldownNascite;
-    void Start()
+    private bool EndSpawn=false;
+    IEnumerator Start()
     {
-        temp = 1;
+
+            StartCoroutine(EnemySpawn(nemici[0],SpawnSlimeV));
+            StartCoroutine(EnemySpawn(nemici[1],SpawnSlimeR));          
+            StartCoroutine(EnemySpawn(nemici[2],SpawnSlimeA));
+
+        if ((i == 2 && Ondata==2)|| (i == 7 && Ondata == 3)|| (i == 12))
+        {
+            EndSpawn = false;
+            i = 0;
+            yield return new WaitForSeconds(10);
+        }
+             
+
+
+        //StartCoroutine(EnemySpawn());
     }
 
     // Update is called once per frame
@@ -28,7 +43,7 @@ public class CreazioneNemici : MonoBehaviour
     }
     private void CreazioneNemiciTOT()
     {
-        if (Time.time >= creazioneNemici)
+      /*  if (Time.time >= creazioneNemici)
         { 
             if (temp < 5)
             {
@@ -74,7 +89,39 @@ public class CreazioneNemici : MonoBehaviour
             }
             temp++;
             creazioneNemici = Time.time + 5;
-        }
+        }*/
         
     }
+    private IEnumerator EnemySpawn(GameObject Enemy,float TempoSpawn)
+    {
+        UnityEngine.Debug.Log("i:" + i);
+        UnityEngine.Debug.Log(EndSpawn);
+        if (i == 2)
+        {
+            EndSpawn = true;
+            Ondata=2;
+        }
+        else if (i==7 && Ondata == 2)
+        {
+            EndSpawn = true;
+            Ondata = 3;
+        }
+        else if (i == 12 && Ondata == 3)
+        {
+            EndSpawn = true;
+        }
+
+
+
+            if (EndSpawn == false)
+        {
+            yield return new WaitForSeconds(TempoSpawn);
+            Instantiate(Enemy, transform.position, Quaternion.identity);
+            StartCoroutine(EnemySpawn(Enemy, TempoSpawn));
+        }
+        i++;
+        UnityEngine.Debug.Log("Ondata:" + Ondata);
+        yield return new WaitForSeconds(10);
+    }
+   
 }
