@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     //dichiarazioni
     [SerializeField] public float velocita;
     [SerializeField] public int vite;
+    [SerializeField] GameObject Enemy;
+    public Nemico nemico;
     public bool attacco, attaccaFermo, colpito, fermo = true;
     public Barra barra;
     private BoxCollider2D pg;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
     private float cooldown = 0;
     private float durata;
     private float invulnerabilità = 0;
+    private int VersoKnockBack, VersoKnockBack1;
     public Transform pos;
     //suoni
     [SerializeField] public AudioSource slash;
@@ -34,12 +37,14 @@ public class Player : MonoBehaviour
         animazione = GetComponent<Animator>();
         barra.VitaMassima(vite);
         pos = gameObject.GetComponent<Transform>();
+        nemico = Enemy.GetComponent<Nemico>();
        // MenuPausa.SetActive(false);
      
     }
     // Update is called once per frame
     void Update()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (Input.GetMouseButtonDown(0))
         {
             // UnityEngine.Debug.Log(/*PauseMenu.activeSelf*/);
@@ -75,7 +80,9 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        UnityEngine.Debug.Log(VersoKnockBack);
+        UnityEngine.Debug.Log(VersoKnockBack1);
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             animazione.SetBool("fermo", false);
             //movimento giocatore
@@ -88,9 +95,29 @@ public class Player : MonoBehaviour
             fermo = true;
             animazione.SetBool("fermo", true);
         }
+
+        if ((animazione.GetFloat("Orizzontale") < 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale")<0)))
+        {
+            VersoKnockBack = 1;
+            VersoKnockBack1 = 3;
+        }
+            
+
+        else if ((animazione.GetFloat("Orizzontale") > 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0)))
+        {
+            VersoKnockBack = 2;
+            VersoKnockBack1 = 4;
+        }
+
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Nemico"))
+        {
+            if (attacco == false || attaccaFermo == false)
+                StartCoroutine(Knockback());
+        }
         //raccoglimento pozioni
         if (collision.gameObject.CompareTag("Pozione")){
             if (vite < 3)
@@ -153,5 +180,43 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1);
         animazione.SetBool("Colpito", false);
     }
-   
+    IEnumerator Knockback()
+    {
+        fermo = true;
+        if (/*(animazione.GetFloat("Orizzontale") < 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0))*/(animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack == 1) || (animazione.GetFloat("Orizzontale") > 0 && VersoKnockBack == 2)) /*(animazione.GetFloat("Verticale") > 0 || animazione.GetFloat("Verticale") < 0 || animazione.GetFloat("Verticale") == 0)) || (animazione.GetFloat("Orizzontale") > 0  && VersoKnockBack==1))*/
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.velocity = new Vector2(-1f, 0f);
+        }
+       else if((animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack==3 )/*(animazione.GetFloat("Orizzontale") > 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0))*/ || (animazione.GetFloat("Orizzontale") > 0 && VersoKnockBack1 == 4)) /*(animazione.GetFloat("Verticale") > 0 || animazione.GetFloat("Verticale") < 0 || animazione.GetFloat("Verticale") == 0)) || (animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack==2))*/
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.velocity = new Vector2(1f, 0f);
+        }
+       else if((animazione.GetFloat("Verticale") > 0 && (animazione.GetFloat("Orizzontale") > 0 || animazione.GetFloat("Orizzontale") < 0 || animazione.GetFloat("Orizzontale") == 0)) || animazione.GetFloat("Verticale") < 0)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.velocity = new Vector2(0f, -1f);
+        }
+            
+       else if((animazione.GetFloat("Verticale") < 0 && (animazione.GetFloat("Orizzontale") > 0 || animazione.GetFloat("Orizzontale") < 0 || animazione.GetFloat("Orizzontale") == 0)) || animazione.GetFloat("Verticale") > 0)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            rb.velocity = new Vector2(0f, 1f);
+        }
+           
+
+        yield return new WaitForSeconds(1f);
+        rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.None;
+        fermo = true;
+        attaccaFermo = false;
+        
+
+
+    }
+
 }

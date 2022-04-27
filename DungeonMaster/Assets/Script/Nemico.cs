@@ -11,13 +11,20 @@ public class Nemico : MonoBehaviour
     [SerializeField] GameObject pozione;
     public Player player;
     private int rilascioPozione;
+    public Vector2 movimento;
+    public Rigidbody2D rb;
+    private Animator animazione;
     private void Start()
     {
         player = giocatore.GetComponent<Player>();
+        rb = GetComponent<Rigidbody2D>();
+        animazione = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
+        Movimento();
+        Animazione();
         inseguimento();
         if (player.velocita == 0 && player.vite != 0)
             velocit‡N = 0;
@@ -54,6 +61,17 @@ public class Nemico : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+    private void Movimento()
+    {
+        movimento.x = giocatore.transform.position.x;
+        movimento.y = giocatore.transform.position.y;
+        rb.MovePosition(rb.position + movimento);
+    }
+    private void Animazione()
+    {
+        animazione.SetFloat("X",movimento.x);
+        animazione.SetFloat("Y", movimento.y);
+    }
+
 
 }
