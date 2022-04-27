@@ -24,7 +24,7 @@ public class CreazioneNemici : MonoBehaviour
     private void FixedUpdate()
     {
         CreazioneNemiciTOT();
-       //Debug.Log(Time.time);
+        //Debug.Log(Time.time);
     }
     private void CreazioneNemiciTOT()
     {
@@ -42,7 +42,7 @@ public class CreazioneNemici : MonoBehaviour
                     else i--;
                 }
             }
-            else if (temp < 7)
+           else if (temp < 7)
             {
                 for (int i = 0; i < temp - 4; i++)
                 {
