@@ -80,8 +80,8 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        UnityEngine.Debug.Log(VersoKnockBack);
-        UnityEngine.Debug.Log(VersoKnockBack1);
+        //UnityEngine.Debug.Log(VersoKnockBack);
+        //UnityEngine.Debug.Log(VersoKnockBack1);
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             animazione.SetBool("fermo", false);
@@ -113,11 +113,6 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Nemico"))
-        {
-            if (attacco == false || attaccaFermo == false)
-                StartCoroutine(Knockback());
-        }
         //raccoglimento pozioni
         if (collision.gameObject.CompareTag("Pozione")){
             if (vite < 3)
@@ -167,6 +162,7 @@ public class Player : MonoBehaviour
         if (vite > 0)
         {
             danno.Play();
+
         } else { 
             death.Play();
             animazione.SetBool("Morte", true);
@@ -180,16 +176,17 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1);
         animazione.SetBool("Colpito", false);
     }
+    /*
     IEnumerator Knockback()
     {
         fermo = true;
-        if (/*(animazione.GetFloat("Orizzontale") < 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0))*/(animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack == 1) || (animazione.GetFloat("Orizzontale") > 0 && VersoKnockBack == 2)) /*(animazione.GetFloat("Verticale") > 0 || animazione.GetFloat("Verticale") < 0 || animazione.GetFloat("Verticale") == 0)) || (animazione.GetFloat("Orizzontale") > 0  && VersoKnockBack==1))*/
+        if (/*(animazione.GetFloat("Orizzontale") < 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0))(animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack == 1) || (animazione.GetFloat("Orizzontale") > 0 && VersoKnockBack == 2)) /*(animazione.GetFloat("Verticale") > 0 || animazione.GetFloat("Verticale") < 0 || animazione.GetFloat("Verticale") == 0)) || (animazione.GetFloat("Orizzontale") > 0  && VersoKnockBack==1))
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             rb.velocity = new Vector2(-1f, 0f);
         }
-       else if((animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack==3 )/*(animazione.GetFloat("Orizzontale") > 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0))*/ || (animazione.GetFloat("Orizzontale") > 0 && VersoKnockBack1 == 4)) /*(animazione.GetFloat("Verticale") > 0 || animazione.GetFloat("Verticale") < 0 || animazione.GetFloat("Verticale") == 0)) || (animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack==2))*/
+       else if((animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack==3 ))animazione.GetFloat("Orizzontale") > 0 && (animazione.GetFloat("Verticale") == 0 || animazione.GetFloat("Verticale") < 0)) || (animazione.GetFloat("Orizzontale") > 0 && VersoKnockBack1 == 4)) /*(animazione.GetFloat("Verticale") > 0 || animazione.GetFloat("Verticale") < 0 || animazione.GetFloat("Verticale") == 0)) || (animazione.GetFloat("Orizzontale") < 0 && VersoKnockBack==2))
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -215,8 +212,8 @@ public class Player : MonoBehaviour
         fermo = true;
         attaccaFermo = false;
         
+    */
 
-
-    }
+    
 
 }

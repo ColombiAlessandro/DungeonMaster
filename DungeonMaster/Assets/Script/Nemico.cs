@@ -23,8 +23,6 @@ public class Nemico : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movimento();
-        Animazione();
         inseguimento();
         if (player.velocita == 0 && player.vite != 0)
             velocit‡N = 0;
@@ -61,17 +59,5 @@ public class Nemico : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Movimento()
-    {
-        movimento.x = giocatore.transform.position.x;
-        movimento.y = giocatore.transform.position.y;
-        rb.MovePosition(rb.position + movimento);
-    }
-    private void Animazione()
-    {
-        animazione.SetFloat("X",movimento.x);
-        animazione.SetFloat("Y", movimento.y);
-    }
-
-
+    
 }
