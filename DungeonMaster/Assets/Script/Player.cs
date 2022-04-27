@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float velocita;
     [SerializeField] public int vite;
     [SerializeField] GameObject Enemy;
+    [SerializeField] GameObject schermataMorte;
     public Nemico nemico;
     public bool attacco, attaccaFermo, colpito, fermo = true;
     public Barra barra;
@@ -38,8 +39,9 @@ public class Player : MonoBehaviour
         barra.VitaMassima(vite);
         pos = gameObject.GetComponent<Transform>();
         nemico = Enemy.GetComponent<Nemico>();
-       // MenuPausa.SetActive(false);
-     
+        // MenuPausa.SetActive(false);
+        schermataMorte.SetActive(false);
+
     }
     // Update is called once per frame
     void Update()
@@ -103,7 +105,7 @@ public class Player : MonoBehaviour
     {
         //raccoglimento pozioni
         if (collision.gameObject.CompareTag("Pozione")){
-            if (vite < 3)
+            if (vite < 5)
             {
                 vite++;
                 barra.ImpostaVita(vite);
@@ -113,6 +115,7 @@ public class Player : MonoBehaviour
         //danno/attacco
         if (collision.gameObject.CompareTag("Nemico"))
         {
+            
             if (attacco == false)
                 animazione.SetBool("Colpito", true);
             if (attacco)
@@ -124,6 +127,7 @@ public class Player : MonoBehaviour
                 if (Time.time >= invulnerabilità)
                 {
                     Danno();
+                    transform.position = Vector2.MoveTowards(transform.position, collision.gameObject.transform.position, -0.20f);
                     invulnerabilità = Time.time + 1.0f;
                 }
             }
@@ -131,9 +135,12 @@ public class Player : MonoBehaviour
     }
     private void Movimento()
     {
-        movimento.x = Input.GetAxis("Horizontal") * velocita;
-        movimento.y = Input.GetAxis("Vertical") * velocita;
-        rb.MovePosition(rb.position + movimento);
+        if (Time.time >= invulnerabilità-0.5f)
+        {
+            movimento.x = Input.GetAxis("Horizontal") * velocita;
+            movimento.y = Input.GetAxis("Vertical") * velocita;
+            rb.MovePosition(rb.position + movimento);
+        }
     }
     private void Animazione()
     {
@@ -151,7 +158,9 @@ public class Player : MonoBehaviour
         {
             danno.Play();
 
-        } else { 
+
+        } else {
+            schermataMorte.SetActive(true);
             death.Play();
             animazione.SetBool("Morte", true);
             velocita = 0;

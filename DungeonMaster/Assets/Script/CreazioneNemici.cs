@@ -43,7 +43,7 @@ public class CreazioneNemici : MonoBehaviour
     }
     private void CreazioneNemiciTOT()
     {
-      /*  if (Time.time >= creazioneNemici)
+      /*  if (Time.time >= creazioneNemici)hai 
         { 
             if (temp < 5)
             {
