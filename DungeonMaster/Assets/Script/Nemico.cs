@@ -9,22 +9,25 @@ public class Nemico : MonoBehaviour
     [SerializeField] GameObject giocatore;
     [SerializeField] public int vite;
     [SerializeField] GameObject pozione;
+    private GameObject[] nemici;
     public Player player;
     private int rilascioPozione;
     public Vector2 movimento;
     public Rigidbody2D rb;
     private Animator animazione;
+    private BoxCollider2D hitbox;
     private void Start()
     {
+        nemici = GameObject.FindGameObjectsWithTag("Nemico");
         player = giocatore.GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         animazione = GetComponent<Animator>();
+        hitbox = GetComponent<BoxCollider2D>();
     }
 
     private void FixedUpdate()
     {
         inseguimento();
-        
     }
     public void inseguimento()
     {
@@ -56,5 +59,5 @@ public class Nemico : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
 }
+

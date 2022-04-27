@@ -4503,7 +4503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de0f914edc378940b810ae796e3061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "velocit\xE0N": 0
+  "velocit\xE0N": 0.3
   giocatore: {fileID: 950094617}
   vite: 1
   pozione: {fileID: 25592170}
@@ -4674,7 +4674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de0f914edc378940b810ae796e3061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "velocit\xE0N": 0
+  "velocit\xE0N": 0.3
   giocatore: {fileID: 950094617}
   vite: 2
   pozione: {fileID: 25592170}
@@ -7051,7 +7051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de0f914edc378940b810ae796e3061e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "velocit\xE0N": 0
+  "velocit\xE0N": 0.3
   giocatore: {fileID: 950094617}
   vite: 3
   pozione: {fileID: 25592170}
