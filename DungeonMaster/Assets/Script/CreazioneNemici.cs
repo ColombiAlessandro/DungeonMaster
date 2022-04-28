@@ -6,122 +6,58 @@ public class CreazioneNemici : MonoBehaviour
 {
     // Start is called before the first frame update
     private Animator animazioni;
-    [SerializeField] GameObject[] nemici;
+    [SerializeField] GameObject Ondata1,Ondata2,Ondata3,miniBossS,miniBossF,BossG,Wave1,Wave2,Wave3,Victory;
+    public Ondata1 ondata1;
+    public Ondata2 ondata2;
+    public Ondata3 ondata3;
+    public Nemico2 nemico;
+    private bool morto=false;
     //tempo tra un'ondata di nemici e quella dopo
     private float creazioneNemici,SpawnSlimeR=10f, SpawnSlimeV = 3.5f, SpawnSlimeA = 6f;
     private int temp,i=0,Ondata=1;
     private float cooldownNascite;
     private bool EndSpawn=false;
-    IEnumerator Start()
+    void Start()
     {
+        nemico = miniBossS.GetComponent<Nemico2>();
+        ondata1 = Ondata1.GetComponent<Ondata1>();
+        ondata2 = Ondata2.GetComponent<Ondata2>();
+        ondata3 = Ondata3.GetComponent<Ondata3>();
 
-            StartCoroutine(EnemySpawn(nemici[0],SpawnSlimeV));
-            StartCoroutine(EnemySpawn(nemici[1],SpawnSlimeR));          
-            StartCoroutine(EnemySpawn(nemici[2],SpawnSlimeA));
-
-        if ((i == 2 && Ondata==2)|| (i == 7 && Ondata == 3)|| (i == 12))
-        {
-            EndSpawn = false;
-            i = 0;
-            yield return new WaitForSeconds(10);
-        }
-             
-
-
-        //StartCoroutine(EnemySpawn());
+        Ondata1.SetActive(true);
+        Wave1.SetActive(true);
     }
-
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void FixedUpdate()
-    {
-        CreazioneNemiciTOT();
-        //Debug.Log(Time.time);
-    }
-    private void CreazioneNemiciTOT()
-    {
-      /*  if (Time.time >= creazioneNemici)hai 
-        { 
-            if (temp < 5)
-            {
-                for (int i = 0; i < temp; i++)
-                {
-                    if (Time.time >= cooldownNascite)
-                    {
-                        Instantiate(nemici[0], transform.position, Quaternion.identity);
-                        cooldownNascite=Time.time+0.5f;
-                    }
-                    else i--;
-                }
-            }
-           else if (temp < 7)
-            {
-                for (int i = 0; i < temp - 4; i++)
-                {
-                    if (Time.time >= cooldownNascite)
-                    {
-                        Instantiate(nemici[0], transform.position, Quaternion.identity);
-                        Instantiate(nemici[1], transform.position, Quaternion.identity);
-                        cooldownNascite = Time.time + 0.5f;
-                    }
-                    else i--;
-                }
-            }
-            else if (temp < 10)
-            {
-                for (int i = 0; i < temp - 6; i++)
-                {
-                    if (Time.time >= cooldownNascite)
-                    {
-                        Instantiate(nemici[2], transform.position, Quaternion.identity);
-                        Instantiate(nemici[1], transform.position, Quaternion.identity);
-                        cooldownNascite = Time.time + 0.5f;
-                    }
-                    else i--;
-                }
-            } else if (temp == 10)
-            {
-                //boss
-                temp = 1;
-            }
-            temp++;
-            creazioneNemici = Time.time + 5;
-        }*/
-        
-    }
-    private IEnumerator EnemySpawn(GameObject Enemy,float TempoSpawn)
-    {
-        UnityEngine.Debug.Log("i:" + i);
-        UnityEngine.Debug.Log(EndSpawn);
-        if (i == 2)
-        {
-            EndSpawn = true;
-            Ondata=2;
+           UnityEngine.Debug.Log("i:" + ondata1.i);
+        UnityEngine.Debug.Log("miniboss:" + miniBossS);
+        if (miniBossS==null && Ondata==1)
+           {
+               morto = true;
+               Ondata1.SetActive(false);
+               Ondata2.SetActive(true);
+               ondata1.i = 0;
+               Ondata++;
+               Wave1.SetActive(false);
+               Wave2.SetActive(true);
         }
-        else if (i==7 && Ondata == 2)
-        {
-            EndSpawn = true;
-            Ondata = 3;
-        }
-        else if (i == 12 && Ondata == 3)
-        {
-            EndSpawn = true;
-        }
+           else if (miniBossF==null && Ondata==2)
+           {
+               Ondata2.SetActive(false);
+               Ondata3.SetActive(true);
+               ondata1.i = 0;
+               Ondata++;
+               Wave2.SetActive(false);
+               Wave3.SetActive(true);
 
-
-
-            if (EndSpawn == false)
-        {
-            yield return new WaitForSeconds(TempoSpawn);
-            Instantiate(Enemy, transform.position, Quaternion.identity);
-            StartCoroutine(EnemySpawn(Enemy, TempoSpawn));
         }
-        i++;
-        UnityEngine.Debug.Log("Ondata:" + Ondata);
-        yield return new WaitForSeconds(10);
+           else if(BossG==null && Ondata==3)
+           {
+               ondata1.i = 0;
+               Ondata3.SetActive(false);
+               Wave3.SetActive(false);
+               Victory.SetActive(true);
+        }
     }
-   
 }

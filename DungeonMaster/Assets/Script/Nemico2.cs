@@ -11,6 +11,7 @@ public class Nemico2 : MonoBehaviour
     public Vector2 movimento;
     public Rigidbody2D rb;
     private Animator animazione;
+    public Barra barra;
     private void Start()
     {
         player = giocatore.GetComponent<Player>();
@@ -46,6 +47,7 @@ public class Nemico2 : MonoBehaviour
     public void PerditaVite()
     {
         vite--;
+        barra.ImpostaVita(vite);
         if (vite == 0)
         {
             Destroy(gameObject);
