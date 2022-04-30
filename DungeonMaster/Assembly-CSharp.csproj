@@ -71,6 +71,8 @@
     <Compile Include="Assets\Script\VolumeSfx.cs" />
     <Compile Include="Assets\Script\Nemico2.cs" />
     <Compile Include="Assets\GameOver.cs" />
+    <Compile Include="Assets\Auto Letterbox\ForceCameraRatio.cs" />
+    <Compile Include="Assets\Auto Letterbox\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

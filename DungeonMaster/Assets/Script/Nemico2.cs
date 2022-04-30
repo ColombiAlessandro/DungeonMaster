@@ -36,10 +36,10 @@ public class Nemico2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (player.attacco == true)
             {
+            if (player.attacco == true)
                 PerditaVite();
-                transform.position = Vector2.MoveTowards(transform.position, collision.gameObject.transform.position, -0.20f);
+                transform.position = Vector2.MoveTowards(transform.position, collision.gameObject.transform.position, -0.40f);
             }
         }
     }

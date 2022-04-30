@@ -118,6 +118,8 @@ public class Player : MonoBehaviour
                     Danno();
                     transform.position = Vector2.MoveTowards(transform.position, collision.gameObject.transform.position, -0.20f);
                     invulnerabilità = Time.time + 1.0f;
+                    attacco = false;
+                    slash.Pause();
                 }
             }
         }
