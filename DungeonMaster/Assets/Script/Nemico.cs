@@ -5,7 +5,7 @@ using System;
 
 public class Nemico : MonoBehaviour
 {
-    [SerializeField] float velocit‡N;
+    [SerializeField] public float velocit‡N;
     [SerializeField] GameObject giocatore;
     [SerializeField] public int vite;
     [SerializeField] GameObject pozione;
@@ -43,6 +43,7 @@ public class Nemico : MonoBehaviour
             if (player.attacco == true)
             {
                 PerditaVite();
+                transform.position = Vector2.MoveTowards(transform.position, collision.gameObject.transform.position, -0.20f);
             }
         }
     }

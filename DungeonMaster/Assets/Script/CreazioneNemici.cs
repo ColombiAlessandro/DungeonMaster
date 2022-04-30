@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class CreazioneNemici : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Animator animazioni;
     [SerializeField] GameObject Ondata1,Ondata2,Ondata3,miniBossS,miniBossF,BossG,Wave1,Wave2,Wave3,Victory;
     public Ondata1 ondata1;
     public Ondata2 ondata2;
     public Ondata3 ondata3;
     public Nemico2 nemico;
-    private bool morto=false;
-    //tempo tra un'ondata di nemici e quella dopo
-    private float creazioneNemici,SpawnSlimeR=10f, SpawnSlimeV = 3.5f, SpawnSlimeA = 6f;
-    private int temp,i=0,Ondata=1;
-    private float cooldownNascite;
-    private bool EndSpawn=false;
+    private int Ondata=1;
     void Start()
     {
         nemico = miniBossS.GetComponent<Nemico2>();
@@ -34,7 +28,6 @@ public class CreazioneNemici : MonoBehaviour
         UnityEngine.Debug.Log("miniboss:" + miniBossS);
         if (miniBossS==null && Ondata==1)
            {
-               morto = true;
                Ondata1.SetActive(false);
                Ondata2.SetActive(true);
                ondata1.i = 0;

@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Ondata1 : MonoBehaviour
 {
-    private float creazioneNemici, SpawnMiniBossS = 5f, SpawnSlimeV = 3.5f, SpawnSlimeA = 3f;
+    private float SpawnMiniBossS = 5f, SpawnSlimeA = 3f;
     [SerializeField] GameObject[] nemici;
     [SerializeField] GameObject MiniBoss1;
     public bool EndSpawn = false;
-    public int i = 0,j=0;
-    public Nemico SlimeR,SlimeV,SlimeA;
+    public int i = 0;
     // Start is called before the first frame update
     void Start()
     {
-        SlimeR = nemici[1].GetComponent<Nemico>();
-        SlimeV = nemici[0].GetComponent<Nemico>();
-        SlimeA = nemici[2].GetComponent<Nemico>();
         StartCoroutine(SpawnEnemy(nemici[2], SpawnSlimeA));
     }
     private void Update()
@@ -41,7 +37,6 @@ public class Ondata1 : MonoBehaviour
         {
             yield return new WaitForSeconds(SpawnMiniBossS);
             MiniBoss1.SetActive(true);
-            Instantiate(MiniBoss1, transform.position, Quaternion.identity);
         }
     }
 }

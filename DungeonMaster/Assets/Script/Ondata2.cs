@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Ondata2 : MonoBehaviour
 {
-    private float creazioneNemici, SpawnMiniBossS=5f, SpawnSlimeR = 3f;
+    private float SpawnMiniBossS=5f, SpawnSlimeR = 3f;
     [SerializeField] GameObject[] nemici;
     [SerializeField] GameObject Ondata1,MiniBoss2;
     public Ondata1 ondata1;
-    private bool EndSpawn = false; 
+    private bool EndSpawn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,6 @@ public class Ondata2 : MonoBehaviour
         {
             yield return new WaitForSeconds(SpawnMiniBossS);
             MiniBoss2.SetActive(true);
-            Instantiate(MiniBoss2, transform.position, Quaternion.identity);
         }
     }
 

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Ondata3 : MonoBehaviour
 {
-    private float creazioneNemici, SpawnBossG=5f, SpawnSlimeV = 2f;
+    private float SpawnBossG=5f, SpawnSlimeV = 2f;
     [SerializeField] GameObject[] nemici;
-    [SerializeField] GameObject Ondata1,Boss;
+    [SerializeField] GameObject Ondata1,Boss,WaveMusic;
     public Ondata1 ondata1;
+    public Player player;
     private bool EndSpawn = false;
     // Start is called before the first frame update
     void Start()
@@ -33,8 +34,8 @@ public class Ondata3 : MonoBehaviour
         if (ondata1.i == 16)
         {
             yield return new WaitForSeconds(SpawnBossG);
+            WaveMusic.SetActive(false);
             Boss.SetActive(true);
-            Instantiate(Boss, transform.position, Quaternion.identity);
         }
     }
 }

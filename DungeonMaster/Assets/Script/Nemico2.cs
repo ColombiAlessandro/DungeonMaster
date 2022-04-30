@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Nemico2 : MonoBehaviour
 {
-    [SerializeField] float velocit‡N;
+    [SerializeField] public float velocit‡N;
     [SerializeField] GameObject giocatore;
     [SerializeField] public int vite;
     public Player player;
@@ -22,9 +22,7 @@ public class Nemico2 : MonoBehaviour
     private void FixedUpdate()
     {
         inseguimento();
-        Animazione();
-
-       
+        Animazione();     
     }
     public void inseguimento()
     {
@@ -41,6 +39,7 @@ public class Nemico2 : MonoBehaviour
             if (player.attacco == true)
             {
                 PerditaVite();
+                transform.position = Vector2.MoveTowards(transform.position, collision.gameObject.transform.position, -0.20f);
             }
         }
     }

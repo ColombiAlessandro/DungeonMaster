@@ -10,8 +10,7 @@ public class Pause : MonoBehaviour
     private void Start()
     {
         PauseMenu.SetActive(false);
-        pl = player.GetComponent<Player>();
-        
+        pl = player.GetComponent<Player>();      
     }
 
     private void Update()
@@ -31,14 +30,12 @@ public class Pause : MonoBehaviour
         }
     }
     public void Pausa()
-    {
-        
+    {     
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
     public void UnPause()
-    {
-        
+    {      
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
         paused = false;

@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     private float cooldown = 0;
     private float durata;
     private float invulnerabilità = 0;
-    private int VersoKnockBack, VersoKnockBack1;
     public Transform pos;
     //suoni
     [SerializeField] public AudioSource slash;
@@ -39,9 +38,8 @@ public class Player : MonoBehaviour
         barra.VitaMassima(vite);
         pos = gameObject.GetComponent<Transform>();
         nemico = Enemy.GetComponent<Nemico>();
-        // MenuPausa.SetActive(false);
         schermataMorte.SetActive(false);
-
+        Time.timeScale = 1;
     }
     // Update is called once per frame
     void Update()
@@ -49,7 +47,6 @@ public class Player : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         if (Input.GetMouseButtonDown(0))
         {
-            // UnityEngine.Debug.Log(/*PauseMenu.activeSelf*/);
             if (Time.time >= cooldown)
             {
                 attacco = true;
@@ -58,9 +55,6 @@ public class Player : MonoBehaviour
                     attaccaFermo = true;
                     animazione.SetBool("attaccaFermo", true);
                 }
-                //fermo = true;
-                //UnityEngine.Debug.Log(fermo);
-                //UnityEngine.Debug.Log(attacco);
                 slash.Play();
                 animazione.SetBool("Attacco", true);
                 cooldown = Time.time + 1.0f;
@@ -78,12 +72,9 @@ public class Player : MonoBehaviour
 
         if (colpito == true)
             colpito = false;
-     
     }
     private void FixedUpdate()
     {
-        //UnityEngine.Debug.Log(VersoKnockBack);
-        //UnityEngine.Debug.Log(VersoKnockBack1);
         if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
             animazione.SetBool("fermo", false);
@@ -162,7 +153,6 @@ public class Player : MonoBehaviour
             death.Play();
             animazione.SetBool("Morte", true);
             velocita = 0;
-            //Destroy(gameObject);
         }
         StartCoroutine(Timer());
     }
