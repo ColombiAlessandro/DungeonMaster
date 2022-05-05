@@ -19,8 +19,11 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -36,8 +39,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -92,6 +97,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2938}
     - Class: 114
       Script: {instanceID: 3128}
+    - Class: 114
+      Script: {instanceID: 3338}
     - Class: 114
       Script: {instanceID: 3380}
     - Class: 114
@@ -286,7 +293,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 42f3b641401640de9ef7cfe93f661bb3
+      Hash: 03c66f7da4047b7d1b599a0754440413
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ondata2
@@ -418,7 +425,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: e637061230b4261fb35b4adc7ac42e05
+      Hash: a6109a9ea571ccb30bf6973cdd4bf865
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ondata3
@@ -616,7 +623,7 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: d416d8e07b3aae0f90a03364cd1e849a
+      Hash: 28fa032a82bda86abfa998b9a0ea8af8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Ondata1
@@ -676,7 +683,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: 297e44e90116396bf77e5354b143ee95
+      Hash: 2b5cedd173cc66693caab4e593b80a40
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CreazioneNemici

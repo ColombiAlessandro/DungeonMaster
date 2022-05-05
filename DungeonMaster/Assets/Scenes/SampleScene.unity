@@ -2740,6 +2740,7 @@ MonoBehaviour:
   Ondata1: {fileID: 408582257}
   Boss: {fileID: 1948100346}
   WaveMusic: {fileID: 38138550}
+  creaN: {fileID: 1761556922}
   ondata1: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &339813808
@@ -2981,6 +2982,7 @@ MonoBehaviour:
   - {fileID: 1411787388}
   - {fileID: 2073867071}
   MiniBoss1: {fileID: 1301223050}
+  creaN: {fileID: 1761556922}
   EndSpawn: 0
   i: 0
 --- !u!1 &429435876
@@ -4709,6 +4711,7 @@ MonoBehaviour:
   - {fileID: 2073867071}
   Ondata1: {fileID: 408582257}
   MiniBoss2: {fileID: 560882881}
+  creaN: {fileID: 1761556922}
   ondata1: {fileID: 0}
 --- !u!1 &911503884
 GameObject:
@@ -8349,6 +8352,7 @@ MonoBehaviour:
   ondata2: {fileID: 0}
   ondata3: {fileID: 0}
   nemico: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1773961448
 GameObject:
   m_ObjectHideFlags: 0

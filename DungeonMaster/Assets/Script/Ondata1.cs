@@ -6,13 +6,15 @@ public class Ondata1 : MonoBehaviour
 {
     private float SpawnMiniBossS = 5f, SpawnSlimeA = 3f;
     [SerializeField] GameObject[] nemici;
-    [SerializeField] GameObject MiniBoss1;
+    [SerializeField] GameObject MiniBoss1,creaN;
     public bool EndSpawn = false;
     public int i = 0;
+    private CreazioneNemici CN;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnEnemy(nemici[2], SpawnSlimeA));
+        CN = creaN.GetComponent<CreazioneNemici>();
     }
     private void Update()
     {
@@ -31,12 +33,14 @@ public class Ondata1 : MonoBehaviour
              Instantiate(enemy, transform.position, Quaternion.identity);
              i++;
              StartCoroutine(SpawnEnemy(enemy, spawnTime));
+             CN.anim.SetBool("Acceso", true);
              
         }
         if (i == 6)
         {
             yield return new WaitForSeconds(SpawnMiniBossS);
             MiniBoss1.SetActive(true);
+            CN.anim.SetBool("Acceso", false);
         }
     }
 }

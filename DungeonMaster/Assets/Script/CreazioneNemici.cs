@@ -11,13 +11,14 @@ public class CreazioneNemici : MonoBehaviour
     public Ondata3 ondata3;
     public Nemico2 nemico;
     private int Ondata=1;
+    public Animator anim;
     void Start()
     {
         nemico = miniBossS.GetComponent<Nemico2>();
         ondata1 = Ondata1.GetComponent<Ondata1>();
         ondata2 = Ondata2.GetComponent<Ondata2>();
         ondata3 = Ondata3.GetComponent<Ondata3>();
-
+        anim = GetComponent<Animator>();
         Ondata1.SetActive(true);
         Wave1.SetActive(true);
     }
